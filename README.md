@@ -1,2 +1,2 @@
 # Unreal_AimAssist
-AimAssist(AutoAim) System for FPS, TPS Game
+AimAssist(AutoAim) System for Unreal FPS, TPS Game
