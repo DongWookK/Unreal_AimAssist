@@ -15,7 +15,6 @@ UAimAssistComponent::UAimAssistComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-
 	RintSpeed = 5.0f;
 	// ...
 }
@@ -32,7 +31,7 @@ void UAimAssistComponent::BeginPlay()
 
 
 /*
-Brief: TickComponent 내부에서 컨트롤러(크로스헤어 위치)의 변경을 담당하는 함수
+Brief: Function responsible for changing the controller (crosshead position) inside the TickComponent
 Input: Target Rotation, Current Pawn's Rotation
 Output: Controller Rotation
 */
