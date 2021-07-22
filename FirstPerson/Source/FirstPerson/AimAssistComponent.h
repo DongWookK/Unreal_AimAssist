@@ -18,6 +18,7 @@ public:
 	// Sets default values for this component's properties
 	UAimAssistComponent();
 
+	bool IsAiming;
 	UCameraComponent* CameraComp;
 	AController* PController;
 
@@ -43,9 +44,6 @@ protected:
 	FRotator AutoTransitRot;
 
 	void AutoRotation(FRotator target, FRotator curren);
-
-	//UFUNCTION(EditDefaultsOnly, Category = "Player")
-	//	void DetectTarget(float DeltaTime);
 
 
 

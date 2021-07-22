@@ -119,6 +119,14 @@ protected:
 	void EndTouch(const ETouchIndex::Type FingerIndex, const FVector Location);
 	void TouchUpdate(const ETouchIndex::Type FingerIndex, const FVector Location);
 	TouchData	TouchItem;
+
+
+	/**
+	Used Toggle action of AimAssist Component;
+	*/
+	void BeginAiming();
+
+	void EndAiming();
 	
 protected:
 	// APawn interface
@@ -139,11 +147,10 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-
-
-	//AimAssist Function Included
+	//AimAssist
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AimAssist")
 		UAimAssistComponent* AimComp;
+
 
 };
 

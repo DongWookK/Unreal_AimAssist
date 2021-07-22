@@ -85,8 +85,11 @@ AFirstPersonCharacter::AFirstPersonCharacter()
 	//bUsingMotionControllers = true;
 
 
+	// Aiming Component must have Reference of CameraComponent, controller;
 	AimComp = CreateDefaultSubobject<UAimAssistComponent>(TEXT("AimComp"));
 	AimComp->CameraComp = FirstPersonCameraComponent;
+	AimComp->PController = GetController();
+
 }
 
 void AFirstPersonCharacter::BeginPlay()
@@ -108,6 +111,10 @@ void AFirstPersonCharacter::BeginPlay()
 		VR_Gun->SetHiddenInGame(true, true);
 		Mesh1P->SetHiddenInGame(false, true);
 	}
+
+
+	AimComp->PController = GetController();
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -141,6 +148,11 @@ void AFirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 	PlayerInputComponent->BindAxis("TurnRate", this, &AFirstPersonCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AFirstPersonCharacter::LookUpAtRate);
+
+
+	PlayerInputComponent->BindAction("AutoAiming", IE_Pressed, this, &AFirstPersonCharacter::BeginAiming);
+	PlayerInputComponent->BindAction("autoAiming", IE_Released, this, &AFirstPersonCharacter::EndAiming);
+
 }
 
 void AFirstPersonCharacter::OnFire()
@@ -220,6 +232,17 @@ void AFirstPersonCharacter::EndTouch(const ETouchIndex::Type FingerIndex, const 
 	}
 	TouchItem.bIsPressed = false;
 }
+
+void AFirstPersonCharacter::BeginAiming()
+{
+	AimComp->SetComponentTickEnabled(true);
+}
+
+void AFirstPersonCharacter::EndAiming()
+{
+	AimComp->SetComponentTickEnabled(false);
+}
+
 
 //Commenting this section out to be consistent with FPS BP template.
 //This allows the user to turn without using the right virtual joystick

@@ -15,7 +15,7 @@ UAimAssistComponent::UAimAssistComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	RintSpeed = 5.0f;
+	RintSpeed = 3.0f;
 	// ...
 }
 
@@ -26,6 +26,7 @@ void UAimAssistComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
+	SetComponentTickEnabled(false);
 	
 }
 
